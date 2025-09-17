@@ -1,0 +1,21 @@
+# Sanal ortam ve cache
+venv/
+__pycache__/
+*.pyc
+
+# IDE ve geçici dosyalar
+.vs/
+*.spec
+*.txt
+
+# Build klasörleri
+build/
+dist/
+buildozer.spec
+.buildozer/
+
+# Stockfish exe (Windows binary gereksiz, Linux kullanacağız)
+stockfish.exe
+
+# Gereksiz kopyalar
+* - Kopya.py
