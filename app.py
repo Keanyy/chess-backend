@@ -13,7 +13,14 @@ def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
-STOCKFISH_PATH = resource_path("stockfish.exe")
+#STOCKFISH_PATH = resource_path("stockfish.exe")
+# Linux (Replit) için doğru binary
+STOCKFISH_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "stockfish_linux",
+    "stockfish-ubuntu-x86-64-avx2"
+)
+
 
 # --- ENGINE & GAME STATE ---
 app = Flask(__name__)
@@ -361,6 +368,5 @@ def get_game_state_json():
 
 # --- SERVER START ---
 if __name__ == '__main__':
-    # Sunucuyu başlat. host='0.0.0.0' ağdaki diğer cihazların (telefonunuz gibi)
-    # erişmesine izin verir.
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
